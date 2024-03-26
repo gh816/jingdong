@@ -2,9 +2,9 @@ import axios from 'axios'
 
 const instance = axios.create({
   // baseURL: 'https://www.fastmock.site/mock/ae8e9031947a302fed5f92425995aa19/jd',
-  baseURL: 'http://localhost:3000',
-  withCredentials: true,
-  timeout: 10000
+  baseURL: 'http://localhost:3000', // 请求地址的公共部分
+  withCredentials: true, // 允许传递cookies
+  timeout: 10000 // 请求的超时时间
 })
 
 export const get = (url, params = {}) => {

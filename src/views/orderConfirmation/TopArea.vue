@@ -37,17 +37,15 @@ export default {
     const address = ref([])
     const shopId = route.params.id
     const addressId = route.params.addressId
+    let username = ''
     const handleBackClick = () => { router.push(`/shop/${shopId}`) }
     const addressList = store.state.addressList
-    const getUserInfo = async (fun) => {
+    const getUserInfo = async () => {
       const result = await get('/api/user/info')
-      const username = result.data.username
-      fun(username)
-    }
-    const getUsername = (username) => {
+      username = result.data.username
       address.value = addressList.find(item => item._id === addressId) || addressList.find(item => item.username === username)
     }
-    getUserInfo(getUsername)
+    getUserInfo()
     const handleAddressClick = () => {
       router.push(`/chooseAddressList/${shopId}`)
     }
